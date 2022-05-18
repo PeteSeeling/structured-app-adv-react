@@ -15,9 +15,20 @@ export default function Header(){
         <>
         <div>
             <Link to='/listview'><p>Link to List View</p></Link>
-            <Link to='/login'><p>Link to Login Page</p></Link>
-            <button onClick={handleSignOut}>Sign Out</button>
+            </div>
+           <div>
+               {user?.email ? (
+                   <>
+                   <h3>Signed in as {user.email}</h3>
+                   <button onClick={handleSignOut}>Sign Out</button>
+                   </>
+               ) : (
+                    <Link to='/login'><p>Link to Login Page</p></Link>
+                )}
+            <div>
+            </div>
+            <hr />
         </div>
         </>
     )
-}
+} 
