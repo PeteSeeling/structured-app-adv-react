@@ -25,7 +25,7 @@ export default function Login(){
 
     async function handleSignup(e){
         try{
-            console.log(password,'pasword--------')
+           
             e.preventDefault();
             await context.signUp(email, password);
 
@@ -33,7 +33,6 @@ export default function Login(){
             history.replaceState(url);
 
          }catch(error){
-            console.log(typeof password,'pasword222--------')
              setError(error.message)
          }
         }
