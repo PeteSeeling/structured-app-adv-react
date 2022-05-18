@@ -4,7 +4,7 @@ import { signInUser, signUpUser } from '../services/user';
 export const UserContext = createContext()
 
 export const UserProvider =({ children }) => {
-    const [user, setUser] = useState({ id: null, email: null })
+    const [user, setUser] = useState({ id: null, email: null, })
 
     const login = async (email, password) => {
         const authenticatedUser = await signInUser({ email, password });
@@ -16,7 +16,7 @@ export const UserProvider =({ children }) => {
 
     const signUp = async (email, password) => {
         try{
-            const user = await signUpUser(email, password);
+            const user = await signUpUser({ email, password });
             setUser(user)
         }catch(error){
             error.message('Sign up issue')

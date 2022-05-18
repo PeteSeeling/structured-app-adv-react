@@ -33,7 +33,7 @@ export default function Login(){
             history.replaceState(url);
 
          }catch(error){
-            console.log(password,'pasword222--------')
+            console.log(typeof password,'pasword222--------')
              setError(error.message)
          }
         }
