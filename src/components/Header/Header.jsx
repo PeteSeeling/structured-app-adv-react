@@ -11,12 +11,10 @@ export default function Header(){
         await signOutUser();
     }
 
-
-
     return (
         <>
         <div>
-            <Link to=''><p>Link to List View</p></Link>
+            <Link to='/listview'><p>Link to List View</p></Link>
             <Link to='/login'><p>Link to Login Page</p></Link>
             <button onClick={handleSignOut}>Sign Out</button>
         </div>
