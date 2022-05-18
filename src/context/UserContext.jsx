@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import { signInUser } from '../services/user';
+import { signInUser, signUpUser } from '../services/user';
 
 export const UserContext = createContext()
 
@@ -14,12 +14,23 @@ export const UserProvider =({ children }) => {
         }
     };
 
+    const signUp = async (email, password) => {
+        try{
+            const user = await signUpUser(email, password);
+            setUser(user)
+        }catch(error){
+            error.message('Sign up issue')
+            throw error;
+        }
+
+    }
+
     const logout = () => {
         setUser({ email: null });
     };
 
     return (
-        <UserContext.Provider value={{ user, login, logout, setUser }}>
+        <UserContext.Provider value={{ signUp, user, login, logout, setUser }}>
                 {children}
         </UserContext.Provider>
     );

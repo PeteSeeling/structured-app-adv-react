@@ -13,7 +13,7 @@ export default function Login(){
     async function handleLogin(e){
         try{
             e.preventDefault();
-           context.login(email, password)
+          await context.login(email, password)
 
            const url = location.state.from ? location.state.from.pathname : '/listview';
            history.replaceState(url);
@@ -25,13 +25,15 @@ export default function Login(){
 
     async function handleSignup(e){
         try{
+            console.log(password,'pasword--------')
             e.preventDefault();
-            await context.signUpUser(email, password);
+            await context.signUp(email, password);
 
             const url = location.state.from ? location.state.from.pathname : '/';
             history.replaceState(url);
 
          }catch(error){
+            console.log(password,'pasword222--------')
              setError(error.message)
          }
         }
@@ -52,14 +54,17 @@ export default function Login(){
                 onChange={(e) => setEmail(e.target.value)}
                 />{''}
                 <label htmlFor='password'>Password</label>
+
                 <input
                 id='password'
                 name='password'
                 type='password'
                 placeholder='password'
                 onChange={(e) => setPassword(e.target.value)}
-                />
+                />{' '}
+
                   <button type='submit' aria-label='Sign-Up' onClick={handleSignup}>Sign Up</button>
+
                 <button type='submit' aria-label='Sign-in' onClick={handleLogin}>Sign In</button>
             </form>
             </>

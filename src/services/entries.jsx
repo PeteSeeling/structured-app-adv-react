@@ -1,5 +1,3 @@
-
-   
 import { client, parseData } from './client';
 
 export async function getEntries() {
