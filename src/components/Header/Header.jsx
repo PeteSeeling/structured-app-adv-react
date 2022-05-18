@@ -13,13 +13,11 @@ export default function Header(){
 
 
 
-
-
     return (
         <>
         <div>
-            <Link to=''><p>Link to List</p></Link>
-            <Link to=''><p>Link to Login Page</p></Link>
+            <Link to=''><p>Link to List View</p></Link>
+            <Link to='/login'><p>Link to Login Page</p></Link>
             <button onClick={handleSignOut}>Sign Out</button>
         </div>
         </>
