@@ -1,12 +1,31 @@
-import { createClient } from '@supabase/supabase-js';
 
-export const client = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
-);
+   
+import { client, parseData } from './client';
 
-export const parseData = ({ data, error }) => {
-  if (error) throw error;
+export async function getEntries() {
+  const request = await client
+    .from('entries')
+    .select()
+    .order('created_at', { ascending: false });
+  return parseData(request);
+}
 
-  return data;
-};
+export async function createEntry({ userId, content }) {
+  const request = await client
+    .from('entries')
+    .insert({ guest_id: userId, content });
+  return parseData(request);
+}
+
+export async function updateEntryById(id, content) {
+  const request = await client
+    .from('entries')
+    .update({ content })
+    .match({ id });
+  return parseData(request);
+}
+
+export async function deleteEntryById(id) {
+  const request = await client.from('entries').delete().match({ id });
+  return parseData(request);
+}

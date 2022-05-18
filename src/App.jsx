@@ -9,6 +9,7 @@ export default function App() {
     <UserProvider>
     <Router>
     <Header />
+    
     <Switch>
       <Route path='/login'>
         <Login />

@@ -15,7 +15,7 @@ export default function Login(){
             e.preventDefault();
            context.login(email, password)
 
-           const url = location.state.from ? location.state.from.pathname : '/dashboard';
+           const url = location.state.from ? location.state.from.pathname : '/listview';
            history.replaceState(url);
 
         }catch(error){
