@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext'
-import { createEntry, deleteEntryById } from '../../services/entries';
+import { createEntry } from '../../services/entries';
 
 
-export default function CountryForm({ onAddEntry, deleteEntryById }){
+export default function CountryForm({ onAddEntry }){
     const [country, setCountry] = useState('');
     const [content, setContent] = useState('')
     const { user } = useUser();
-    const [isEditing, setIsEditing] = useState(false)
 
     const addCountry = async (e) => {
         e.preventDefault();
@@ -16,61 +15,27 @@ export default function CountryForm({ onAddEntry, deleteEntryById }){
         setContent('')
     }
 
-    let countryItem;
-
-    if(isEditing){
-        countryItem=(
-       
-            <form onSubmit={(e) =>{
-                e.preventDefault()
-                setIsEditing(false)
-            }}>
+    return(
+        <div>
+            <form onSubmit={addCountry}>
             <p>Country Visited</p>
-
-                <input
+            
+                <textarea
                 aria-label='country name'
-                value={country.text}
+                value={country}
                 placeholder='Country You Visited'
                 onChange={({ target }) => setCountry(target.value)} />
-                <button aria-label='submit item change'>Edit Country</button>
-
                 <p>Country Notes</p>
+
                 <textarea
                 aria-label='country details'
                 placeholder='Details of The Country'
                 value={content}
                 onChange={({ target }) => setContent(target.value)} />
-                
 
                 <button
                 aria-label='add country button' type='submit'>Add Country</button>
             </form>
-       
+        </div>
     )
-} else {
-countryItem = (
-    <>
-    <p>{country.text}</p>
-    <button
-    aria-label={`${country.text}-edit`}
-    onClick={() => setIsEditing(true)}>
-        Edit Country
-    </button>
-    <p>{content}</p>
-    <button
-    aria-label={`${content.text}-edit`}
-    onClick={() => setIsEditing(true)}>
-        Edit Content
-    </button>
-    </>
-)
 }
-
-return(
-    <div>
-        { countryItem }
-        <button
-        onClick={() => deleteEntryById(country.id)}
-        aria-label={`${country.text}=delete`}>Delete Country</button>
-    </div>
-)}
