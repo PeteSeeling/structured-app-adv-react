@@ -29,7 +29,7 @@ export default function Login(){
             e.preventDefault();
             await context.signUp(email, password);
 
-            const url = location.state.from ? location.state.from.pathname : '/listview';
+            const url = location.state.from ? location.state.from.pathname : '/';
             history.replaceState(url);
 
          }catch(error){
@@ -60,7 +60,7 @@ export default function Login(){
                 type='password'
                 placeholder='password'
                 onChange={(e) => setPassword(e.target.value)}
-                />{' '}
+                />
 
                 <button type='submit' aria-label='Sign-Up' onClick={handleSignup}>Sign Up</button>
                 <button type='submit' aria-label='Sign-in' onClick={handleLogin}>Sign In</button>

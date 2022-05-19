@@ -4,7 +4,7 @@ import { useUser } from '../../context/UserContext';
 import { useEffect, useState } from 'react';
 import CountryEntry from '../Entry/CountryEntry';
 
-export default function ListView(){
+export default function ListView({ onChange }){
     const [entries, setEntries] = useState([])
     const [loading, setLoading] = useState(true)
     const { user } = useUser();
@@ -31,7 +31,8 @@ export default function ListView(){
                          author={user.email}
                          country={country}
                          content={content}
-                         date={date} />
+                         date={date}
+                         onChange={onChange} />
                      </li>
                  );
              })
