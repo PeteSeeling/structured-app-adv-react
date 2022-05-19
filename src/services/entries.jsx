@@ -8,10 +8,10 @@ export async function getEntries() {
   return parseData(request);
 }
 
-export async function createEntry({ user_id, content, country }) {
+export async function createEntry({ user_id, content, country, date }) {
   const request = await client
     .from('country_entries')
-    .insert({ user_id, content, country });
+    .insert({ user_id, content, country, date });
   return parseData(request);
 }
 

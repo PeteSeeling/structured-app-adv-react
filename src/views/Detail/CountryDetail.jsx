@@ -16,21 +16,25 @@ export default function CountryForm({ onAddEntry }){
     }
 
     return(
-        <div>Enter Country Visited///country form
+        <div>
             <form onSubmit={addCountry}>
+            <p>Country Visited</p>
+            
                 <textarea
                 aria-label='country name'
                 value={country}
                 placeholder='Country You Visited'
                 onChange={({ target }) => setCountry(target.value)} />
+                <p>Country Notes</p>
+
                 <textarea
                 aria-label='country details'
                 placeholder='Details of The Country'
                 value={content}
                 onChange={({ target }) => setContent(target.value)} />
+
                 <button
                 aria-label='add country button' type='submit'>Add Country</button>
-        
             </form>
         </div>
     )
