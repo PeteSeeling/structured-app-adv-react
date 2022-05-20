@@ -7,6 +7,7 @@ import CountryEntry from '../Entry/CountryEntry';
 export default function ListView({ onChange }){
     const [entries, setEntries] = useState([])
     const [loading, setLoading] = useState(true)
+    const [submitChange, setSubmitChange] = useState()
     const { user } = useUser();
 
     const fetchEntries = () => {
@@ -18,6 +19,11 @@ export default function ListView({ onChange }){
     useEffect(() => {
         fetchEntries()
     }, [])
+
+    useEffect(() => {
+        fetchEntries()
+    },[submitChange])
+
     return(
     <>
     <CountryForm onAddEntry={fetchEntries} />
@@ -28,11 +34,13 @@ export default function ListView({ onChange }){
                  return(
                      <li aria-label='country list' key={id}>
                          <CountryEntry
+                         id={id}
                          author={user.email}
                          country={country}
                          content={content}
                          date={date}
-                         onChange={onChange} />
+                         setSubmitChange={setSubmitChange}
+                    />
                      </li>
                  );
              })

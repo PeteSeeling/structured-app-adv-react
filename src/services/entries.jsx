@@ -15,10 +15,10 @@ export async function createEntry({ user_id, content, country, date}) {
   return parseData(request);
 }
 
-export async function updateEntryById(id, content) {
+export async function updateEntryById(id, content, country) {
   const request = await client
     .from('country_entries')
-    .update({ content })
+    .update({ content, country })
     .match({ id });
   return parseData(request);
 }
