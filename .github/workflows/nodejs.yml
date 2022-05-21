@@ -16,3 +16,5 @@ jobs:
     - run: npm test
       env:
         CI: true
+        SUPABASE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdicm5mdXlqY3R4aGRtdWhhZGp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTI4MzA0MzAsImV4cCI6MTk2ODQwNjQzMH0.Pgi75mnsNGtfsAJ4y8w9ey5FZn7dGIfGFJWo2AAkzE0
+        SUPABASE_URL: https://gbrnfuyjctxhdmuhadjt.supabase.co
