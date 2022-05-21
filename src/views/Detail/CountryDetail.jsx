@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext'
-import { createEntry } from '../../services/entries';
+import { createEntry, addCountry } from '../../services/entries';
 
 
 export default function CountryForm({ onAddEntry, onChange }){
@@ -55,12 +55,5 @@ countryItem=(
     return(
         <div>
             { countryItem }
-            <button
-    type='button'
-    onClick={() => onDelete(country.id)}
-    aria-label={`${country.id}-delete`}
-    >
-        Delete 
-    </button>
         </div>
     )}

@@ -24,6 +24,12 @@ export async function updateEntryById(id, content, country) {
 }
 
 export async function deleteEntryById(id) {
-  const request = await client.from('country_entries').delete().match({ id });
+ 
+
+  const request = await client
+  .from('country_entries')
+  .delete()
+  .match({ id })
   return parseData(request);
 }
+
