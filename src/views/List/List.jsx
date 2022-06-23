@@ -4,7 +4,7 @@ import { useUser } from '../../context/UserContext';
 import { useEffect, useState } from 'react';
 import CountryEntry from '../Entry/CountryEntry';
 
-export default function ListView({ onChange }){
+export default function ListView({}){
     const [entries, setEntries] = useState([])
     const [loading, setLoading] = useState(true)
     const [submitChange, setSubmitChange] = useState()
