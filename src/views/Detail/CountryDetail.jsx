@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext'
-import { createEntry, addCountry } from '../../services/entries';
+import { createEntry } from '../../services/entries';
 
 
-export default function CountryForm({ onAddEntry, onChange }){
+export default function CountryForm({ onAddEntry }){
     const [country, setCountry] = useState('');
     const [content, setContent] = useState('')
     const { user } = useUser();

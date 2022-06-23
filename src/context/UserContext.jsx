@@ -18,11 +18,11 @@ export const UserProvider =({ children }) => {
         try{
             const user = await signUpUser({ email, password });
             setUser(user)
+
         }catch(error){
             error.message('Sign up issue')
             throw error;
         }
-
     }
 
     const logout = () => {

@@ -9,6 +9,7 @@ export default function PrivateRoute({ children, ...rest }) {
         render={({ location }) =>
         user.email ? (
             children) : (
+                
                 <Redirect
                 to={{
                 pathname:'/login',

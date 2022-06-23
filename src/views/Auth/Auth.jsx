@@ -5,18 +5,17 @@ import { useUser } from '../../context/UserContext';
 export default function Login(){
     const location = useLocation();
     const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const context = useUser();
   
-
     async function handleLogin(e){
         try{
             e.preventDefault();
-          await context.login(email, password)
+            await context.login(email, password)
 
-           const url = location.state.from ? location.state.from.pathname : '/listview';
-           history.replaceState(url);
+            const url = location.state.from ? location.state.from.pathname : '/listview';
+            history.replaceState(url);
 
         }catch(error){
             setError(error.message)
@@ -25,7 +24,6 @@ export default function Login(){
 
     async function handleSignup(e){
         try{
-           
             e.preventDefault();
             await context.signUp(email, password);
 
@@ -52,8 +50,8 @@ export default function Login(){
                 placeholder='email'
                 onChange={(e) => setEmail(e.target.value)}
                 />{''}
-                <label htmlFor='password'>Password</label>
 
+                <label htmlFor='password'>Password</label>
                 <input
                 id='password'
                 name='password'
